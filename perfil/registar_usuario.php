@@ -243,9 +243,6 @@ include_once 'conexao.php';
           <label for="nome">Nome Completo</label>
 
           <input type="text" class="form-control" id="nome" placeholder="Nome Completo" value="" required>
-            <div class="invalid-feedback" >
-                <small><b>Campo Obrigatório</b></small>
-            </div>
             <span id="nomev"></span>
         </div>
         <div class="form-group col-md-3">
@@ -335,26 +332,11 @@ include_once 'conexao.php';
 
 </body>
 
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('click', function(btnRegistar) {
-        if (form.checkValidity() === false) {
-          btnRegistar.preventDefault();
-          btnRegistar.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
-</script>
+  <script src="../bootstrap-validate/dist/bootstrap-validate.js"></script>
+  <script>
+      // Basic Example
+      bootstrapValidate('#nome', 'contains:Peter:Needs to Contain "Peter"|min:20:Enter 20 character!|max:40:Enter 40 chars at most!');
+  </script>
 
 <script>
 /* Open the sidenav */
