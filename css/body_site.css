@@ -1,0 +1,230 @@
+    @media only screen and (max-width: 697px) {
+    .mobile-hide{ display: none !important; }
+    }
+    @media only screen and (max-width: 330px) {
+    .mobile{ display: inline !important; }
+    }
+    @media only screen and (min-width: 991px) {
+    .desktop-hide{ display: none !important; }
+    }
+    @media only screen and (max-width: 596px) {
+    .mobile-hide-txt{ display: none !important; }
+    }
+    @media only screen and (max-width: 1058px) {
+    .mobile-hide-menu{ display: none !important; }
+    }
+    @media only screen and (max-width: 697px) {
+    .mobile-hide-login{ display: none !important; }
+    }
+    @media only screen and (max-width: 670px) {
+    .mobile-hide-jumbo{ display: none !important; }
+    }
+    @media only screen and (max-width: 420px) {
+    .mobile-hide-bottom{ display: none !important; }
+    }
+    @media only screen and (max-width: 332px) {
+    .mobile-hide-carrousel{ display: none !important; }
+    }
+
+    /* Change the color of links on hover */
+.topnav a:hover {
+    border-bottom: #000000;
+    border-bottom: solid 4px;
+    margin-top: 8px;
+  
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: #04b46b;
+    color: white;
+}
+
+.topnavloc{
+    margin-left: 170px; 
+    float: left; 
+    font-size: 18px
+}
+
+.sidenavposition{
+    margin-top: 150px;
+}
+
+.sidenavpositionMin{
+    margin-top: 120px;
+}
+
+.jumbotron-museu {
+  background-image: url("../assets/imagens/jumbotron/jumbo1.png");
+  background-size: cover;
+}
+.scpLogo h1 a {
+  background-image: url("../assets/imagens/logo/svg/Logo.svg");
+  background-repeat: no-repeat;
+  background-size: 120px auto;
+  width: 120px;
+  height: 155px;
+  display: block;
+  text-indent: -9999px;
+  z-index: 2000;
+  display: block;
+  position: relative; }
+
+.scpLogo {
+  position: absolute;
+  left: 20px;
+  width: 100px;
+  top: -35px;
+  height: 120px; }
+
+.btn-xs.navbar-btn {
+    margin-bottom: 0px;
+}
+.logoshadow {
+  background-image: url("../assets/imagens/logo/svg/LogoShadow.svg");
+  background-repeat: no-repeat;
+  background-size: 160px auto;
+  width: 160px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative; 
+
+  }
+
+   /* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: absolute; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 0px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+} 
+
+.body {
+    font-family: Arial;
+}
+
+.nav1{
+    height: 40px;
+    margin-top: 0px;
+}
+
+.socialtop{
+    font-size: 25px; 
+    color: white;
+}
+
+.social-mini{
+    font-size: 15px;
+    color: #000000;
+}
+.nav2{
+    background-color: #f1f1f1; 
+    height: 48px; 
+    margin-top: 40px;
+}
+
+.txt-head{
+    margin-left: 170px; 
+    color: #5e6461; 
+    font-family: Arial; 
+    font-size: 0.80rem;
+}
+
+.login{
+    float: right;
+}
+
+.navmenu{
+    margin-top: 88px; 
+    height: 62px; 
+    background-color: #04b46b;  
+    border-bottom: #343a40 solid 4px;
+}
+
+.sededed{
+    margin-top: 588px; 
+    height: 62px; 
+    background-color: #04b46b;  
+    border-bottom: #343a40 solid 4px;
+}
+
+.mobilemenu{
+    margin-left: 140px;
+}
+
+.carrousel1{
+    position: relative; 
+    margin-top: 150px;
+}
+
+.footer1{
+    height: 80px; 
+    background: #080909; 
+    border-top: #04b46b solid 4px; 
+    margin-top: 0px; 
+    padding-top: 30px;
+}
+
+.footer-link{
+    font-size: 15px;
+}
+
+.footer2{
+    height: 80px; 
+    margin-top: 0px; 
+    padding-top: 30px;
+}
+
+.footer3{
+    height: 80px; 
+    margin-top: 0px; 
+    padding-top: 0px;
+}
+
+.topbody{
+  margin-top: 150px;
+  
+}
