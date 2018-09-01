@@ -335,7 +335,8 @@ include_once 'conexao.php';
   <script src="../bootstrap-validate/dist/bootstrap-validate.js"></script>
   <script>
       // Basic Example
-      bootstrapValidate('#nome', 'contains:Peter:Needs to Contain "Peter"|min:20:Enter 20 character!|max:40:Enter 40 chars at most!');
+
+      bootstrapValidate('#nome', 'required:<b>Campo Obrigatório!</b>')
   </script>
 
 <script>
