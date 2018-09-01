@@ -248,9 +248,7 @@ include_once 'conexao.php';
         <div class="form-group col-md-3">
             <label for="socio">Número Sócio Núcleo</label>
               <input type="text" class="form-control" id="socio" placeholder="Número de Sócio" value="" required>
-            <div class="invalid-feedback">
-                <small><b>Campo Obrigatório</b></small>
-            </div>
+
         </div>
       </div>
       <div class="form-row">
@@ -332,11 +330,7 @@ include_once 'conexao.php';
 
 </body>
 
-  <script src="../bootstrap-validate/dist/bootstrap-validate.js"></script>
-  <script>
-      // Basic Example
-      bootstrapValidate('#nome', 'contains:Peter:Needs to Contain "Peter"|min:20:Enter 20 character!|max:40:Enter 40 chars at most!');
-  </script>
+<!-- Optional JavaScript -->
 
 <script>
 /* Open the sidenav */
@@ -347,10 +341,11 @@ function openNav() {
 /* Close/hide the sidenav */
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
-} 
+}
 </script>
 
-    <!-- Optional JavaScript -->
+<script src="../bootstrap-validate/dist/bootstrap-validate.js"></script>
+  
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/jquery.min.js"></script>
     <script src="../js/popper.min.js"></script>

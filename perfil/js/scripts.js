@@ -23,14 +23,15 @@ $(document).ready(function(){
         var ver_socio;    
 
         if (nome == '') {
-            
+            bootstrapValidate('#nome', 'min:10:Minimo 10 Caracteres!')
+            bootstrapValidate('#nome', 'required:<b>Campo Obrigatório!</b>')
             $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>O Campo Nome não pode estar vazio</b></div>');
 		     window.setTimeout(function() {
             $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove(); 
+                $(this).remove();
             });
         	}, 5000);
-      		
+
       		$('.alert .close').on("click", function(e){
             $(this).parent().fadeTo(500, 0).slideUp(500);
          	});
