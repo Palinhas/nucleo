@@ -16,16 +16,14 @@ $(document).ready(function(){
                 
 		var validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 		var myMatchEmail = email.search(validEmail); // Pesquisa do caractere invalido
+        var validSocio = /^[0-9]/g;
+        var myMatchSocio = socio.search(validSocio); // Pesquisa do caractere invalido
                 
 		var contaLetras = $("#senha").val().length; // conta as Letras da password
-                
-        var ver_nome;
-        var ver_socio;    
 
         if (nome == '') {
-            bootstrapValidate('#nome', 'min:10:Minimo 10 Caracteres!')
-            bootstrapValidate('#nome', 'required:<b>Campo Obrigatório!</b>')
-            $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>O Campo Nome não pode estar vazio</b></div>');
+
+            $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>Obrigatório o Nome Completo</b></div>');
 		     window.setTimeout(function() {
             $(".alert").fadeTo(500, 0).slideUp(500, function(){
                 $(this).remove();
@@ -41,8 +39,9 @@ $(document).ready(function(){
 		console.log("Nome RegValidar: " + RegValidar);	
    
         }else if(socio == ''){
-   
-		 $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>O Campo sócio não pode estar vazio</b></div>');
+
+
+		 	$("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>O Campo sócio não pode estar vazio</b></div>');
 		     window.setTimeout(function() {
             $(".alert").fadeTo(500, 0).slideUp(500, function(){
                 $(this).remove(); 
@@ -55,9 +54,28 @@ $(document).ready(function(){
 			
 //			$("#socio").val('');	
                 RegValidar = false;
-		console.log("Socio RegValidar: " + RegValidar);	
+			console.log("Socio RegValidar: " + RegValidar);
 
-	}else if(email == ''){
+        }else if(myMatchSocio == -1){
+
+
+            $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>O Campo sócio não pode conter letras</b></div>');
+            window.setTimeout(function() {
+                $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                    $(this).remove();
+                });
+            }, 5000);
+
+            $('.alert .close').on("click", function(e){
+                $(this).parent().fadeTo(500, 0).slideUp(500);
+            });
+
+//			$("#socio").val('');
+            RegValidar = false;
+            console.log("Socio RegValidar: " + RegValidar);
+            console.log("validSocio: " + myMatchSocio);
+
+		}else if(email == ''){
                     
 		 $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>O Campo Email não pode estar vazio</b></div>');
 		     window.setTimeout(function() {
@@ -167,10 +185,13 @@ $(document).ready(function(){
                 type: 'POST',
                 data: {socio: socio, nome: nome, acao: 'compara'},
                 success: function(retorno){
-                	var compara = retorno;
-                    $("#mensagem").text(compara);
 
-					if (nome == compara){
+                    $("#mensagem").text(retorno.nomec);
+                    $("#mensagem2").text(retorno.moradac);
+                    console.log("Nomec: " + retorno.nomec);
+                    console.log("Moradac: " + retorno.moradac);
+
+					if (nome == retorno.nomec){
 
                         $("#nomev").html('<div class="text text-success"><small><b>Nome Válido</b></small></div>');
 
@@ -186,7 +207,7 @@ $(document).ready(function(){
 
                         RegValidar = true;
 
-					}else if(nome !== compara){
+					}else if(nome !== retorno.nomec){
 
 
                         $("#nomev").html('<div class="text text-danger"><small><b>Nome inválido</b></small></div>');
@@ -220,7 +241,8 @@ $(document).ready(function(){
                 console.log("senhac : " + senhac);
                 console.log("socio : " + socio);
                 console.log("myMatchEmail : " + myMatchEmail);
-                console.log(RegValidar);
+                console.log("RegValidar: " + RegValidar);
+        		console.log("validSocio: " + myMatchSocio);
                 
                  
 		return false;

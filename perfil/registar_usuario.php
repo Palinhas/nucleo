@@ -242,10 +242,11 @@ include_once 'conexao.php';
         <div class="form-group col-md-9">
           <label for="nome">Nome Completo</label>
 
-          <input type="text" class="form-control" id="nome" placeholder="Nome Completo" value="" required>
+          <input type="text" class="form-control active" id="nome" placeholder="Nome Completo" value="" required>
             <span id="nomev"></span>
         </div>
         <div class="form-group col-md-3">
+            <span id="mensagem2"></span>
             <label for="socio">Número Sócio Núcleo</label>
               <input type="text" class="form-control" id="socio" placeholder="Número de Sócio" value="" required>
 
@@ -255,44 +256,21 @@ include_once 'conexao.php';
         <div class="form-group col-md-6">
             <label for="email">Email</label>
               <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" required>
-<!--         <div class="valid-feedback">
-            E-mail válido!
-          </div>-->
-          <div class="invalid-feedback">
-            Introduzia um e-mail válido exemplo@exemplo.pt!
-          </div>
+
         </div>      
         <div class="form-group col-md-6">
             <label for="emailc">Confirmar E-mail</label>
               <input type="email" class="form-control" name="emailc" id="emailc" placeholder="Confirmar E-mail" required>
-<!--            <div class="valid-feedback">
-            Confirmar E-mail!
-          </div>-->
-          <div class="invalid-feedback">
-            Introduza um e-mail válido exemplo@exemplo.pt!
-          </div>      
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
             <label for="senha">Password</label>
            <input type="password" class="form-control" name="senha" id="senha" placeholder="Password" required>
-<!--            <div class="valid-feedback">
-            Senha válida minimo 6 caracteres!
-          </div>-->
-          <div class="invalid-feedback">
-            Password válida minimo 6 caracteres!
-          </div> 
         </div>
         <div class="form-group col-md-6">
             <label for="senhac">Confirmar Password</label>
              <input type="password" class="form-control" name="senhac" id="senhac" placeholder="Password" required>
-<!--      <div class="valid-feedback">
-            Password válida minimo 6 caracteres!
-          </div>-->
-          <div class="invalid-feedback">
-             Password válida minimo 6 caracteres!
-          </div> 
         </div>
         </div><br>
        <button style="width: 100%;" class="btn btn-success btn-sm ml-lg-2" id="btnRegistar" >Efetuar Registo</button>
@@ -345,7 +323,29 @@ function closeNav() {
 </script>
 
 <script src="../bootstrap-validate/dist/bootstrap-validate.js"></script>
-  
+
+  <script>
+      bootstrapValidate('#nome', 'min:10:Minimo 10 Caracteres!')
+      bootstrapValidate('#nome', 'required:<b>Campo Obrigatório!</b>')
+
+      bootstrapValidate('#socio', 'numeric:10:Não são permitidas letras!')
+      bootstrapValidate('#socio', 'required:<b>Campo Obrigatório!</b>')
+
+      bootstrapValidate('#email', 'email:Insira um e-mail válido')
+      bootstrapValidate('#email', 'required:<b>Campo Obrigatório!</b>')
+
+      bootstrapValidate('#emailc', 'matches:#email:O e-mail não coincide')
+      bootstrapValidate('#emailc', 'required:<b>Campo Obrigatório!</b>')
+
+      bootstrapValidate('#senha', 'min:6:Minimo 6 Caracteres!')
+      bootstrapValidate('#senha', 'required:<b>Campo Obrigatório!</b>')
+
+      bootstrapValidate('#senhac', 'matches:#senha:A password não coincide')
+      bootstrapValidate('#senhac', 'required:<b>Campo Obrigatório!</b>')
+
+
+  </script>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/jquery.min.js"></script>
     <script src="../js/popper.min.js"></script>
