@@ -238,31 +238,30 @@ include_once 'conexao.php';
     </div>
       <form class="needs-validation" novalidate>
           <span id="mensagem"></span>
+
       <div class="form-row">
         <div class="form-group col-md-9">
           <label for="nome">Nome Completo</label>
-
           <input type="text" class="form-control active" id="nome" placeholder="Nome Completo" value="" required>
             <span id="nomev"></span>
         </div>
         <div class="form-group col-md-3">
-            <span id="mensagem2"></span>
             <label for="socio">Número Sócio Núcleo</label>
               <input type="text" class="form-control" id="socio" placeholder="Número de Sócio" value="" required>
-
         </div>
       </div>
+
       <div class="form-row">
         <div class="form-group col-md-6">
             <label for="email">Email</label>
               <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" required>
-
         </div>      
         <div class="form-group col-md-6">
             <label for="emailc">Confirmar E-mail</label>
               <input type="email" class="form-control" name="emailc" id="emailc" placeholder="Confirmar E-mail" required>
         </div>
       </div>
+
       <div class="form-row">
         <div class="form-group col-md-6">
             <label for="senha">Password</label>
@@ -273,6 +272,8 @@ include_once 'conexao.php';
              <input type="password" class="form-control" name="senhac" id="senhac" placeholder="Password" required>
         </div>
         </div><br>
+
+          <input type="hidden" estado="estado" id="estado" placeholder="0" >
        <button style="width: 100%;" class="btn btn-success btn-sm ml-lg-2" id="btnRegistar" >Efetuar Registo</button>
     </form><hr>
     <span>Já possui um registo ? </span> <a class="" href="login.php">Login aqui !</a>
@@ -325,7 +326,7 @@ function closeNav() {
 <script src="../bootstrap-validate/dist/bootstrap-validate.js"></script>
 
   <script>
-      bootstrapValidate('#nome', 'min:10:Minimo 10 Caracteres!')
+      bootstrapValidate('#nome', 'min:3:Minimo 10 Caracteres!')
       bootstrapValidate('#nome', 'required:<b>Campo Obrigatório!</b>')
 
       bootstrapValidate('#socio', 'numeric:10:Não são permitidas letras!')

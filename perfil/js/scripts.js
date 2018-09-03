@@ -4,21 +4,21 @@ $(document).ready(function(){
 
 	$("#btnRegistar").click(function(e){ // e - evento do coolback
 		e.preventDefault();
-                
-	var RegValidar = true;	
-        
+
+	var erro = false;
+
 		var nome = $('#nome').val();
 		var email = $("#email").val();
 		var emailc = $("#emailc").val();
 		var senha = $("#senha").val();
 		var senhac = $("#senhac").val();
 		var socio = $("#socio").val();
-                
+
 		var validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 		var myMatchEmail = email.search(validEmail); // Pesquisa do caractere invalido
         var validSocio = /^[0-9]/g;
         var myMatchSocio = socio.search(validSocio); // Pesquisa do caractere invalido
-                
+
 		var contaLetras = $("#senha").val().length; // conta as Letras da password
 
         if (nome == '') {
@@ -33,28 +33,27 @@ $(document).ready(function(){
       		$('.alert .close').on("click", function(e){
             $(this).parent().fadeTo(500, 0).slideUp(500);
          	});
-			
-//			$("#nome").val('');	
-                RegValidar = false;
-		console.log("Nome RegValidar: " + RegValidar);	
-   
+
+            erro = true;
+		// console.log("Nome RegValidar: " + RegValidar);
+
         }else if(socio == ''){
 
 
 		 	$("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>O Campo sócio não pode estar vazio</b></div>');
 		     window.setTimeout(function() {
             $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove(); 
+                $(this).remove();
             });
         	}, 5000);
-      		
+
       		$('.alert .close').on("click", function(e){
             $(this).parent().fadeTo(500, 0).slideUp(500);
          	});
-			
-//			$("#socio").val('');	
-                RegValidar = false;
-			console.log("Socio RegValidar: " + RegValidar);
+
+//			$("#socio").val('');
+             erro = true;
+			// console.log("Socio RegValidar: " + RegValidar);
 
         }else if(myMatchSocio == -1){
 
@@ -70,144 +69,121 @@ $(document).ready(function(){
                 $(this).parent().fadeTo(500, 0).slideUp(500);
             });
 
-//			$("#socio").val('');
-            RegValidar = false;
-            console.log("Socio RegValidar: " + RegValidar);
-            console.log("validSocio: " + myMatchSocio);
+            erro = true;
+            // console.log("Socio RegValidar: " + RegValidar);
+            // console.log("Socio RegValidar: " + RegValidar);
+            // console.log("validSocio: " + myMatchSocio);
 
 		}else if(email == ''){
-                    
+
 		 $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>O Campo Email não pode estar vazio</b></div>');
 		     window.setTimeout(function() {
             $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove(); 
+                $(this).remove();
             });
         	}, 5000);
-      		
+
       		$('.alert .close').on("click", function(e){
             $(this).parent().fadeTo(500, 0).slideUp(500);
          	});
-			
-//			$("#email").val('');	
-                RegValidar = false;
-		console.log("Socio RegValidar: " + RegValidar);	
+
+           erro = true;
+            // console.log("Socio RegValidar: " + RegValidar);
 
 	}else if(email !== emailc){
-                    
+
 		 $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>A confirmação de E-mail Falhou</b></div>');
 		     window.setTimeout(function() {
             $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove(); 
+                $(this).remove();
             });
         	}, 5000);
-      		
+
       		$('.alert .close').on("click", function(e){
             $(this).parent().fadeTo(500, 0).slideUp(500);
          	});
-			
-//			$("#email").val('');	
-                RegValidar = false;
-		console.log("Email Carateres RegValidar: " + RegValidar);	
-        
+
+            erro = true;
+            // console.log("Socio RegValidar: " + RegValidar);
+
         }else if(myMatchEmail == -1){
-                    
+
 		 $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>Introduza um E-mail válido!</b></div>');
 		     window.setTimeout(function() {
             $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove(); 
+                $(this).remove();
             });
         	}, 5000);
-      		
+
       		$('.alert .close').on("click", function(e){
             $(this).parent().fadeTo(500, 0).slideUp(500);
          	});
-			
-//			$("#email").val('');	
-                RegValidar = false;
-		console.log("Email myMatchEmail: " + RegValidar);
-                console.log(myMatchEmail);
+
+//			$("#email").val('');
+            erro = true;
+            // console.log("Socio RegValidar: " + RegValidar);
+            //     console.log(myMatchEmail);
 
 	}else if(senha == ''){
-                    
+
 		 $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>O Campo da Password não pode estar vazio</b></div>');
 		     window.setTimeout(function() {
             $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove(); 
+                $(this).remove();
             });
         	}, 5000);
-      		
+
       		$('.alert .close').on("click", function(e){
             $(this).parent().fadeTo(500, 0).slideUp(500);
          	});
-			
-//			$("#email").val('');	
-                RegValidar = false;
-		console.log("Email Carateres RegValidar: " + RegValidar);	
+
+            erro = true;
+            // console.log("Socio RegValidar: " + RegValidar);
 
 	}else if(senha !== senhac ){
-                    
+
 		 $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>A confirmação da Password Falhou!</b></div>');
 		     window.setTimeout(function() {
             $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove(); 
+                $(this).remove();
             });
         	}, 5000);
-      		
+
       		$('.alert .close').on("click", function(e){
             $(this).parent().fadeTo(500, 0).slideUp(500);
          	});
-			
-//			$("#email").val('');	
-                RegValidar = false;
-		console.log("Email Carateres RegValidar: " + RegValidar);	
 
-	}else if(contaLetras < 6 ){
-                    
-		 $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>A password têm de conter no minimo 6 letras!</b></div>');
-		     window.setTimeout(function() {
-            $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove(); 
+      		erro = true;
+            // console.log("Socio RegValidar: " + RegValidar);
+
+	}else if(contaLetras < 6 ) {
+
+            $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>A password têm de conter no minimo 6 letras!</b></div>');
+            window.setTimeout(function () {
+                $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                    $(this).remove();
+                });
+            }, 5000);
+
+            $('.alert .close').on("click", function (e) {
+                $(this).parent().fadeTo(500, 0).slideUp(500);
             });
-        	}, 5000);
-      		
-      		$('.alert .close').on("click", function(e){
-            $(this).parent().fadeTo(500, 0).slideUp(500);
-         	});
-			
-//			$("#email").val('');	
-                RegValidar = false;
-		console.log("Email Carateres RegValidar: " + RegValidar);
 
-    }else if(nome !== ''){
+            erro = true;
+            // console.log("Socio RegValidar: " + RegValidar);
+        }
 
             $.ajax({
                 url: 'trata.php',
                 type: 'POST',
                 data: {socio: socio, nome: nome, acao: 'compara'},
                 success: function(retorno){
+                    var nomec = retorno.nomec;
+                    $("#mensagem").text(nomec);
+                    // console.log("Nomec: " + retorno.nomec);
+                    // console.log("Moradac: " + retorno.moradac);
 
-                    $("#mensagem").text(retorno.nomec);
-                    $("#mensagem2").text(retorno.moradac);
-                    console.log("Nomec: " + retorno.nomec);
-                    console.log("Moradac: " + retorno.moradac);
-
-					if (nome == retorno.nomec){
-
-                        $("#nomev").html('<div class="text text-success"><small><b>Nome Válido</b></small></div>');
-
-                        window.setTimeout(function() {
-                            $(".text").fadeTo(500, 0).slideUp(500, function(){
-                                $(this).remove();
-                            });
-                        }, 5000);
-
-                        $('.text .close').on("click", function(e){
-                            $(this).parent().fadeTo(500, 0).slideUp(500);
-                        });
-
-                        RegValidar = true;
-
-					}else if(nome !== retorno.nomec){
+                    if(nome !== nomec){
 
 
                         $("#nomev").html('<div class="text text-danger"><small><b>Nome inválido</b></small></div>');
@@ -222,18 +198,75 @@ $(document).ready(function(){
                             $(this).parent().fadeTo(500, 0).slideUp(500);
                         });
 
-                    }
-                    RegValidar = false;
+                        erro = false;
+                        console.log("ajax erro: " + erro);
+
+                    }else if (nome == nomec){
+
+                        erro = true;
+                        console.log("ajax erro: " + erro);
+
+                        $("#nomev").html('<div class="text text-success"><small><b>Nome Correto</b></small></div>');
+
+                        window.setTimeout(function() {
+                            $(".text").fadeTo(500, 0).slideUp(500, function(){
+                                $(this).remove();
+                            });
+                        }, 5000);
+
+                        $('.text .close').on("click", function(e){
+                            $(this).parent().fadeTo(500, 0).slideUp(500);
+                        });
+
+return erro;
+					}
+
+
                 },
                 error: function(data){
                     console.log(data);
 
-                }
+
+                },
 
             });
-            console.log(RegValidar);
-        }
-        
+
+            if(!erro){
+                $.ajax({
+                    url: 'trata.php',
+                    type: 'POST',
+                    data: {nome: nome, email: email, senha: senha, socio: socio, acao: 'registar'},
+                    success: function(retorno){
+
+                        $("#mensagemRegisto").html('<div class="alert alert-success"><button type="button" class="close">×</button><b>Regista efetuado !</b></div>');
+                        window.setTimeout(function() {
+                            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                                $(this).remove();
+                            });
+                        }, 5000);
+
+                        $('.alert .close').on("click", function(e){
+                            $(this).parent().fadeTo(500, 0).slideUp(500);
+                        });
+
+                    },
+                    error: function(data){
+                        console.log(data);
+                        $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>Erro ao efetuar o registo!</b></div>');
+                        window.setTimeout(function() {
+                            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                                $(this).remove();
+                            });
+                        }, 5000);
+
+                        $('.alert .close').on("click", function(e){
+                            $(this).parent().fadeTo(500, 0).slideUp(500);
+                        });
+                    },
+
+                });
+            }
+
                 console.log("nome : " + nome);
                 console.log("email : " + email);
                 console.log("emailc : " + emailc);
@@ -241,11 +274,11 @@ $(document).ready(function(){
                 console.log("senhac : " + senhac);
                 console.log("socio : " + socio);
                 console.log("myMatchEmail : " + myMatchEmail);
-                console.log("RegValidar: " + RegValidar);
+                console.log("erro: " + erro);
+
         		console.log("validSocio: " + myMatchSocio);
-                
-                 
-		return false;
+
+
 	});
 
 
