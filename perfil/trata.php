@@ -1,21 +1,81 @@
 <?php
 include_once("conexao.php");
-$acao = $_POST['acao'];
+$acao = empty($_POST['acao'])?'':$_POST['acao'];
 
 switch ($acao) {
 
     case 'registar':
+        $erro = false;
+        $nsocioe = false;
+        $registo = false;
 
-        $nome = empty($_POST['nome']) ? '' : $_POST['nome'];
-        $email = empty($_POST['email']) ? '' : $_POST['email'];
-        $senha = password_hash($dados['senha'], PASSWORD_DEFAULT);
-        $socio = empty($_POST['socio']) ? '' : $_POST['socio'];
-        $estado = empty($_POST['estado']) ? '' : $_POST['estado'];
+            $result_socios = "SELECT * FROM socios WHERE socio='". $_POST['socio'] ."'"; // verifica se o numero de sócio está inserido na tabela socios
+            $resultado_socios = mysqli_query($conn, $result_socios);
+            $row_socios = mysqli_fetch_array($resultado_socios);
 
-        $result_usuario = "INSERT INTO usuarios (nome, email, senha, socio, estado, created) VALUES ('$nome', '$email', '$senha', '$estado', NOW())";
+            $compara = $_POST['socio'];
+            $socios =  empty($row_socios['socio'])?'':$row_socios['socio'];
 
-        $Conexao = mysqli_query($conn,
-            $result_usuario) or die ('Erro ao inserir os dados ' . mysqli_error($result_usuario));
+            if ($compara !== $socios) {
+                $erro = true;
+                $nsocioe = true;
+            }
+
+            $ids = empty($row_socios['id'])?'':$row_socios['id'];
+            $result_nomes = "SELECT * FROM socios WHERE id='$ids' ORDER BY id ASC"; // Ligacao a base de dados socios
+            $resultado_nomes = mysqli_query($conn, $result_nomes);
+            $row_nomes = mysqli_fetch_array($resultado_nomes);
+
+            $comparaNome = $_POST['nome'];
+            $nomesSocios =  empty($row_nomes['nome'])?'':$row_nomes['nome'];
+
+            $contaNome = mb_strlen("$comparaNome");
+            $contaSocio = mb_strlen("$nomesSocios");
+
+            //if ($comparaNome !== $nomesSocios) {
+            //if (($comparaNome) AND ($nomesSocios->num_rows != 0)) { // Conta as rows e verifica se o mome de socio coincide
+
+            if ($contaNome !== $contaSocio ) { // Conta as rows e verifica se o mome de socio coincide
+                $erro = true;
+            }
+
+            $result_usuario = "SELECT id FROM usuarios WHERE email='". $_POST['email'] ."'"; // verifica o email se é igual
+            $resultado_usuario = mysqli_query($conn, $result_usuario);
+
+            if (($resultado_usuario) AND ($resultado_usuario->num_rows != 0)) { // Conta as rows e verifica se é existe algum dado
+                $erro = true;
+            }
+            $result_usuario = "SELECT id FROM usuarios WHERE socio='". $_POST['socio'] ."'"; // verifica o numero de socio se é igual
+            $resultado_usuario = mysqli_query($conn, $result_usuario);
+
+            if (($resultado_usuario) AND ($resultado_usuario->num_rows != 0)) { // Conta as rows e verifica se é existe algum dado
+                $erro = true;
+            }
+
+            if (!$erro) {
+                // var_dump($dados);
+                $_POST['senha'] = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+
+                $result_usuario = "INSERT INTO usuarios (nome, email, senha, socio, estado, created) VALUES (
+                  '" .$_POST['nome']. "',
+                  '" .$_POST['email']. "',
+                  '" .$_POST['senha']. "',
+                  '" .$_POST['socio']. "',
+                  '" .$_POST['estado']. "', NOW())";
+                $resultado_usuario = mysqli_query($conn, $result_usuario);
+                //$Conexao = mysqli_query($conn, $result_usuario) or die ('Erro ao inserir os dados '.mysqli_error($result_usuario)) ;
+                if (mysqli_insert_id($conn)) {
+                    $registo = true;
+                }else{
+                    $registo = false;
+                }
+            }
+
+
+        $msgi = array('erro' => $erro, 'nsocioe' => $nsocioe, 'registo' => $registo);
+        header('content-type: application/json');
+        echo json_encode($msgi);
+
 
         break;
 

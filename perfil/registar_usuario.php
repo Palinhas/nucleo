@@ -3,109 +3,6 @@ session_start();
 ob_start();
 include_once 'conexao.php';
 
-//$btnRegisto = filter_input(INPUT_POST, 'btnRegisto', FILTER_SANITIZE_STRING);
-//if ($btnRegisto) {
-//  include_once 'conexao.php';
-//    $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT); // recebo pelo array tudo junto e direciono o campo pela variavel $dados.
-//    $dados_rc = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-//    $erro = false;
-//    $dados_st = array_map('strip_tags', $dados_rc); // regra para os caracteres
-//    $dados = array_map('strip_tags', $dados_st);  // regra para os caracteres
-//    if (in_array('',$dados)) { // regra para os espacos
-//        $erro = true;
-//        $_SESSION['msgreg'] = "<p style='color:red;'><b> Erro obrigatório preencher todos os campos </b></p>";
-//    }elseif (strlen($dados['senha']) < 6 ) {  // Senha minimo 6 caracteres
-//        $erro = true;
-//        $_SESSION['msgreg'] = "<p style='color:red;'><b> A password deve ter pelo menos 6 Caracteres </b></p>";
-//
-//    }elseif (stristr($dados['senha'], "'")) {  // Senha proibir '' caracteres
-//        $erro = true;
-//        $_SESSION['msgreg'] = "<p style='color:red;'><b> Caracter invalido (') </b></p>";
-//    }elseif (stristr($dados['senha'], ",")) {  // Senha proibir , caracteres
-//        $erro = true;
-//        $_SESSION['msgreg'] = "<p style='color:red;'>Caracter invalido (,) </b></p>";
-//    }elseif (stristr($dados['senha'], ".")) {  // Senha proibir . caracteres
-//        $erro = true;
-//        $_SESSION['msgreg'] = "<p style='color:red;'><b>Erro caracter errado (.) </b></p>";
-//    }elseif ($dados['senha'] <> $dados['senhac']){
-//        $erro = true;
-//        $_SESSION['msgreg'] = "<p style='color:red;'><b>Erro a password não coincide.</b></p>";
-//    }else{
-//      $result_socios = "SELECT * FROM socios WHERE socio='". $dados['socio'] ."'"; // verifica se o numero de sócio está inserido na tabela socios
-//      $resultado_socios = mysqli_query($conn, $result_socios);
-//      $row_socios = mysqli_fetch_array($resultado_socios);
-//
-//      $compara = $dados['socio'];
-//      $socios =  empty($row_socios['socio'])?'':$row_socios['socio'];
-//
-//      if ($compara !== $socios) {
-//          $erro = true;
-//          $_SESSION['msgreg'] = "<p style='color:red;'><b>O número de Sócio: ". $dados['socio'] ." Não existe.</b></p>";
-//      }
-//
-//      $ids = empty($row_socios['id'])?'':$row_socios['id'];
-//      $result_nomes = "SELECT * FROM socios WHERE id='$ids' ORDER BY id ASC"; // Ligacao a base de dados socios
-//      $resultado_nomes = mysqli_query($conn, $result_nomes);
-//      $row_nomes = mysqli_fetch_array($resultado_nomes);
-//
-//      $comparaNome = $dados['nome'];
-//      $nomesSocios =  empty($row_nomes['nome'])?'':$row_nomes['nome'];
-//
-//      $contaNome = mb_strlen("$comparaNome");
-//      $contaSocio = mb_strlen("$nomesSocios");
-//
-//      //if ($comparaNome !== $nomesSocios) {
-//      //if (($comparaNome) AND ($nomesSocios->num_rows != 0)) { // Conta as rows e verifica se o mome de socio coincide
-//      if ($contaNome !== $contaSocio ) { // Conta as rows e verifica se o mome de socio coincide
-//          $erro = true;
-//          $_SESSION['msgreg'] = "<p style='color:red;'><b>O nome que está a registar é: ". $dados['nome'] .", esse nome não coincide com o nome do número de socio: ". $dados['socio'] ." da nossa base de dados .</b></p>";
-//      }
-///*      $result_usuario = "SELECT id FROM usuarios WHERE usuario='". $dados['usuario'] ."'"; // verifica o nome se é igual
-//      $resultado_usuario = mysqli_query($conn, $result_usuario);
-//      if (($resultado_usuario) AND ($resultado_usuario->num_rows != 0)) { // Conta as rows e verifica se é existe algum dado
-//          $erro = true;
-//          $_SESSION['msgreg'] = "<p style='color:red;'><b>O Usuario: ". $dados['usuario'] ." já está a ser utilizado.</b></p>";
-//      }*/
-//      $result_usuario = "SELECT id FROM usuarios WHERE email='". $dados['email'] ."'"; // verifica o email se é igual
-//      $resultado_usuario = mysqli_query($conn, $result_usuario);
-//      if (($resultado_usuario) AND ($resultado_usuario->num_rows != 0)) { // Conta as rows e verifica se é existe algum dado
-//          $erro = true;
-//          $_SESSION['msgreg'] = "<p style='color:red;'><b>O e-mail: ". $dados['email'] ." já está a ser utilizado.</b></p>";
-//      }
-//      $result_usuario = "SELECT id FROM usuarios WHERE socio='". $dados['socio'] ."'"; // verifica o numero de socio se é igual
-//      $resultado_usuario = mysqli_query($conn, $result_usuario);
-//      if (($resultado_usuario) AND ($resultado_usuario->num_rows != 0)) { // Conta as rows e verifica se é existe algum dado
-//          $erro = true;
-//          $_SESSION['msgreg'] = "<p style='color:red;'><b>O número de Sócio: ". $dados['socio'] ." já foi registado.</b></p>";
-//      }
-//
-//    //var_dump($dados);
-//    //
-//
-//    if (!$erro) {
-//          // var_dump($dados);
-//          $dados['senha'] = password_hash($dados['senha'], PASSWORD_DEFAULT);
-//
-//  $result_usuario = "INSERT INTO usuarios (nome, email, usuario, senha, socio, estado, created) VALUES (
-//                  '" .$dados['nome']. "',
-//                  '" .$dados['email']. "',
-//                  '" .$dados['usuario']. "',
-//                  '" .$dados['senha']. "',
-//                  '" .$dados['socio']. "',
-//                  '" .$dados['estado']. "', NOW())";
-//  $resultado_usuario = mysqli_query($conn, $result_usuario);
-//  //$Conexao = mysqli_query($conn, $result_usuario) or die ('Erro ao inserir os dados '.mysqli_error($result_usuario)) ;
-//          if (mysqli_insert_id($conn)) {
-//              $_SESSION['msg'] = "<p style='color:green;'><b>Parabéns, registo criado com sucesso.</b></p>";
-//              header("Location: login.php");
-//          }else{
-//              $_SESSION['msgreg'] = "<p style='color:red;'><b>Erro ao criar o usuario.</b></p>";
-//              header("Location: registar_usuario.php");
-//          }
-//        }
-//      }
-//    }
-
 ?>
 <!doctype html>
 <html lang="pt">
@@ -222,7 +119,9 @@ include_once 'conexao.php';
   <div class="col mb-3" style="flex: 40%; float: left;">
     <div class="mt-3"">
       <span class="display-3">Registar</span><hr>
-        <center><div id="mensagemRegisto"></div></center>
+        <center><span id="mensagemRegisto"></span></center>
+        <span id="teste"></span>
+        <span id="teste2"></span>
           <?php
                     
           if(isset($_SESSION['msgreg'])){
@@ -237,13 +136,11 @@ include_once 'conexao.php';
       ?>
     </div>
       <form class="needs-validation" novalidate>
-          <span id="mensagem"></span>
 
       <div class="form-row">
         <div class="form-group col-md-9">
           <label for="nome">Nome Completo</label>
           <input type="text" class="form-control active" id="nome" placeholder="Nome Completo" value="" required>
-            <span id="nomev"></span>
         </div>
         <div class="form-group col-md-3">
             <label for="socio">Número Sócio Núcleo</label>
@@ -252,13 +149,9 @@ include_once 'conexao.php';
       </div>
 
       <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-12">
             <label for="email">Email</label>
               <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" required>
-        </div>      
-        <div class="form-group col-md-6">
-            <label for="emailc">Confirmar E-mail</label>
-              <input type="email" class="form-control" name="emailc" id="emailc" placeholder="Confirmar E-mail" required>
         </div>
       </div>
 
@@ -266,6 +159,7 @@ include_once 'conexao.php';
         <div class="form-group col-md-6">
             <label for="senha">Password</label>
            <input type="password" class="form-control" name="senha" id="senha" placeholder="Password" required>
+            <span id="mensagemsenha"></span>
         </div>
         <div class="form-group col-md-6">
             <label for="senhac">Confirmar Password</label>
@@ -335,10 +229,7 @@ function closeNav() {
       bootstrapValidate('#email', 'email:Insira um e-mail válido')
       bootstrapValidate('#email', 'required:<b>Campo Obrigatório!</b>')
 
-      bootstrapValidate('#emailc', 'matches:#email:O e-mail não coincide')
-      bootstrapValidate('#emailc', 'required:<b>Campo Obrigatório!</b>')
-
-      bootstrapValidate('#senha', 'min:6:Minimo 6 Caracteres!')
+      bootstrapValidate('#senha', 'min:8:Minimo 8 Caracteres!')
       bootstrapValidate('#senha', 'required:<b>Campo Obrigatório!</b>')
 
       bootstrapValidate('#senhac', 'matches:#senha:A password não coincide')
