@@ -64,13 +64,80 @@ $(document).ready(function(){
                 type: 'POST',
                 data: {nome: nome, email: email, senha: senha, socio: socio, acao: 'registar'},
                 success: function(retorno){
-
-                    $("#teste3").text(retorno.erro);
-                    console.log("Retorno erro: " + retorno.erro);
-                    $("#teste2").text(retorno.nsocioe);
-                    console.log("Retorno nsocioe: " + retorno.nsocioe);
                     $("#teste").text(retorno.registo);
-                    console.log("Retorno registo: " + retorno.registo);
+
+                    if (retorno.nsocioe == true){
+                        $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button>' +
+                            '<p><b>Número de sócio não existe na base de dádos!!!! Por favor, consulte o administrador se realmente este for o seu número de sócio.</b></p>' +
+                            '</div>');
+                        window.setTimeout(function() {
+                            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                                $(this).remove();
+                            });
+                        }, 5000);
+
+                        $('.alert .close').on("click", function(e){
+                            $(this).parent().fadeTo(500, 0).slideUp(500);
+                        });
+
+                    }else if (retorno.nomee == true){
+                        $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button>' +
+                            '<p><b>O Nome de sócio não coincide com o número de sócio!!!!</b></p>' +
+                            '</div>');
+                        window.setTimeout(function() {
+                            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                                $(this).remove();
+                            });
+                        }, 5000);
+
+                        $('.alert .close').on("click", function(e){
+                            $(this).parent().fadeTo(500, 0).slideUp(500);
+                        });
+
+                    }else if (retorno.emaile == true){
+                        $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button>' +
+                            '<p><b>O e-mail que está a tentar registar já está registado!!!!</b></p>' +
+                            '</div>');
+                        window.setTimeout(function() {
+                            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                                $(this).remove();
+                            });
+                        }, 5000);
+
+                        $('.alert .close').on("click", function(e){
+                            $(this).parent().fadeTo(500, 0).slideUp(500);
+                        });
+
+                    }else if (retorno.socioue == true){
+                        $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button>' +
+                            '<p><b>O número de sócio que está a tentar registar já está registado!!!!</b></p>' +
+                            '</div>');
+                        window.setTimeout(function() {
+                            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                                $(this).remove();
+                            });
+                        }, 5000);
+
+                        $('.alert .close').on("click", function(e){
+                            $(this).parent().fadeTo(500, 0).slideUp(500);
+                        });
+
+                    }else if (retorno.registo == true){
+
+                        document.location.href = "login.php";
+                        $("#mensagemLogin").html('<div class="alert alert-success"><button type="button" class="close">×</button>' +
+                            '<p><b>Registo efetuado com sucesso!!!!</b></p>' +
+                            '</div>');
+                        window.setTimeout(function() {
+                            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                                $(this).remove();
+                            });
+                        }, 5000);
+
+                        $('.alert .close').on("click", function(e){
+                            $(this).parent().fadeTo(500, 0).slideUp(500);
+                        });
+                    }
 
                 },
                 error: function(data){

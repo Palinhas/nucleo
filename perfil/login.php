@@ -101,7 +101,7 @@ session_start();
         <div class="row">
           <div class="col-12 text-center">      
           <span class="display-3">Login</span><hr style="width: 38%;" >
-    
+              <span id="mensagemLogin"></span>
           <?php
 
           if(isset($_SESSION['msg'])){
@@ -113,6 +113,7 @@ session_start();
           </div>
         </div>
       </div>
+
     <form class="form-signin" method="post" action="valida.php">
       <label class="sr-only">E-mail</label>
       <input type="email" name="email" class="form-control" placeholder="Escreva o e-m@il" required autofocus>
@@ -176,6 +177,7 @@ function closeNav() {
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/jquery.min.js"></script>
     <script src="../js/popper.min.min.js"></script>
+    <script src="js/scripts.js"></script>
     <script src="../js/bootstrap.min.js"></script>
   </body>
 </html>

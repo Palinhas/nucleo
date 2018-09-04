@@ -7,6 +7,9 @@ switch ($acao) {
     case 'registar':
         $erro = false;
         $nsocioe = false;
+        $nomee = false;
+        $emaile = false;
+        $socioue = false;
         $registo = false;
 
             $result_socios = "SELECT * FROM socios WHERE socio='". $_POST['socio'] ."'"; // verifica se o numero de sócio está inserido na tabela socios
@@ -37,31 +40,35 @@ switch ($acao) {
 
             if ($contaNome !== $contaSocio ) { // Conta as rows e verifica se o mome de socio coincide
                 $erro = true;
+                $nomee = true;
             }
 
             $result_usuario = "SELECT id FROM usuarios WHERE email='". $_POST['email'] ."'"; // verifica o email se é igual
             $resultado_usuario = mysqli_query($conn, $result_usuario);
 
-            if (($resultado_usuario) AND ($resultado_usuario->num_rows != 0)) { // Conta as rows e verifica se é existe algum dado
+            if (($resultado_usuario) AND ($resultado_usuario->num_rows != 0)) { // Conta as rows e verifica se é existe algum dado do email
                 $erro = true;
+                $emaile = true;
             }
-            $result_usuario = "SELECT id FROM usuarios WHERE socio='". $_POST['socio'] ."'"; // verifica o numero de socio se é igual
+            $result_usuario = "SELECT id FROM usuarios WHERE socio='". $_POST['socio'] ."'"; // verifica o numero de socio é igual
             $resultado_usuario = mysqli_query($conn, $result_usuario);
 
-            if (($resultado_usuario) AND ($resultado_usuario->num_rows != 0)) { // Conta as rows e verifica se é existe algum dado
+            if (($resultado_usuario) AND ($resultado_usuario->num_rows != 0)) { // Conta as rows e verifica se existe algum dado
                 $erro = true;
+                $socioue = true;
             }
 
             if (!$erro) {
                 // var_dump($dados);
                 $_POST['senha'] = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+                $estado = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_STRING);
 
                 $result_usuario = "INSERT INTO usuarios (nome, email, senha, socio, estado, created) VALUES (
                   '" .$_POST['nome']. "',
                   '" .$_POST['email']. "',
                   '" .$_POST['senha']. "',
                   '" .$_POST['socio']. "',
-                  '" .$_POST['estado']. "', NOW())";
+                  '" .$estado. "', NOW())";
                 $resultado_usuario = mysqli_query($conn, $result_usuario);
                 //$Conexao = mysqli_query($conn, $result_usuario) or die ('Erro ao inserir os dados '.mysqli_error($result_usuario)) ;
                 if (mysqli_insert_id($conn)) {
@@ -72,7 +79,13 @@ switch ($acao) {
             }
 
 
-        $msgi = array('erro' => $erro, 'nsocioe' => $nsocioe, 'registo' => $registo);
+        $msgi = array('erro' => $erro,
+            'nsocioe' => $nsocioe,
+            'registo' => $registo ,
+            'nomee' => $nomee,
+            'emaile' => $emaile,
+            'socioue' => $socioue
+        );
         header('content-type: application/json');
         echo json_encode($msgi);
 
