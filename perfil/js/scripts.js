@@ -64,7 +64,6 @@ $(document).ready(function(){
                 type: 'POST',
                 data: {nome: nome, email: email, senha: senha, socio: socio, acao: 'registar'},
                 success: function(retorno){
-                    $("#teste").text(retorno.registo);
 
                     if (retorno.nsocioe == true){
                         $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button>' +
@@ -109,6 +108,7 @@ $(document).ready(function(){
                         });
 
                     }else if (retorno.socioue == true){
+
                         $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button>' +
                             '<p><b>O número de sócio que está a tentar registar já está registado!!!!</b></p>' +
                             '</div>');
@@ -124,10 +124,10 @@ $(document).ready(function(){
 
                     }else if (retorno.registo == true){
 
-                        document.location.href = "login.php";
-                        $("#mensagemLogin").html('<div class="alert alert-success"><button type="button" class="close">×</button>' +
-                            '<p><b>Registo efetuado com sucesso!!!!</b></p>' +
-                            '</div>');
+                        document.location.href='login.php';
+                        $("#mensagemLogin").html('<b>Sucesso!!!!</b></div>');
+                       // $("#mensagemLogin").html('<div class="alert alert-success"><button type="button" class="close">×</button><p><b>Sucesso!!!!</b></p></div>');
+
                         window.setTimeout(function() {
                             $(".alert").fadeTo(500, 0).slideUp(500, function(){
                                 $(this).remove();
@@ -137,6 +137,7 @@ $(document).ready(function(){
                         $('.alert .close').on("click", function(e){
                             $(this).parent().fadeTo(500, 0).slideUp(500);
                         });
+
                     }
 
                 },
@@ -150,11 +151,9 @@ $(document).ready(function(){
 
                 console.log("nome : " + nome);
                 console.log("email : " + email);
-
                 console.log("senha : " + senha);
                 console.log("senhac : " + senhac);
                 console.log("socio : " + socio);
-
                 console.log("erro: " + erro);
 
 

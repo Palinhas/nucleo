@@ -119,20 +119,13 @@ include_once 'conexao.php';
   <div class="col mb-3" style="flex: 40%; float: left;">
     <div class="mt-3"">
       <span class="display-3">Registar</span><hr>
-        <center><span id="mensagemRegisto"></span></center>
-        <span id="teste"></span>
-        <span id="teste2"></span>
+        <span id="mensagemRegisto"></span>
           <?php
                     
           if(isset($_SESSION['msgreg'])){
               echo $_SESSION['msgreg'];
               unset($_SESSION['msgreg']);
           }
-    //echo "compara: $compara <br>";
-    //echo "socios: $socios <br>";
-    //  echo "comparaNome: $comparaNome <br>";
-    //  echo "nomesSocios: $nomesSocios <br>";
-    //var_dump($dados);
       ?>
     </div>
       <form class="needs-validation" novalidate>
