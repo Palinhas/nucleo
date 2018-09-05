@@ -23,6 +23,10 @@ include_once 'conexao.php';
     <link rel="stylesheet" href="../css/body_site.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
+      <!-- Sweetalert2 CSS -->
+      <script src="../js/sweetalert2.min.js"></script>
+      <link rel="stylesheet" href="../css/sweetalert2.min.css">
+
     <!-- Custom styles for this template -->
     <link href="../css/signin2.css" rel="stylesheet">
   
@@ -236,4 +240,9 @@ function closeNav() {
     <script src="../js/popper.min.js"></script>
     <script src="js/scripts.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+
+    <script src="../js/sweetalert2.all.min.js"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+    <script src="../js/polyfill.min.js"></script>
+
 </html>

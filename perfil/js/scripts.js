@@ -15,46 +15,32 @@ $(document).ready(function(){
 
         if (nome == '' || email == '' || senha == '' || senhac == '' || socio == '') {
 
-        	$("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>Preencha todos os campos!!!!</b></div>');
-            window.setTimeout(function() {
-                $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                    $(this).remove();
-                });
-            }, 5000);
+            swal({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Preencha todos os campos!!!!',
+            })
 
-            $('.alert .close').on("click", function(e){
-                $(this).parent().fadeTo(500, 0).slideUp(500);
-            });
 
             var erro = true;
 
         } else if ((senha.length) < 8) {
 
-            $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>A Passwords têm de ter no minimo 8 caracteres!!!!</b></div>');
-            window.setTimeout(function() {
-                $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                    $(this).remove();
-                });
-            }, 5000);
-
-            $('.alert .close').on("click", function(e){
-                $(this).parent().fadeTo(500, 0).slideUp(500);
-            });
+            swal({
+                type: 'error',
+                title: 'Oops...',
+                text: 'A Passwords têm de ter no minimo 8 caracteres!!!!',
+            })
 
             var erro = true;
 
         } else if (!(senha).match(senhac)) {
 
-            $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button><b>As Passwords não coincidem!!!!</b></div>');
-            window.setTimeout(function() {
-                $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                    $(this).remove();
-                });
-            }, 5000);
-
-            $('.alert .close').on("click", function(e){
-                $(this).parent().fadeTo(500, 0).slideUp(500);
-            });
+            swal({
+                type: 'error',
+                title: 'Oops...',
+                text: 'As Passwords não coincidem!!!!',
+            })
 
             var erro = true;
         }
@@ -66,78 +52,53 @@ $(document).ready(function(){
                 success: function(retorno){
 
                     if (retorno.nsocioe == true){
-                        $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button>' +
-                            '<p><b>Número de sócio não existe na base de dádos!!!! Por favor, consulte o administrador se realmente este for o seu número de sócio.</b></p>' +
-                            '</div>');
-                        window.setTimeout(function() {
-                            $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                                $(this).remove();
-                            });
-                        }, 5000);
 
-                        $('.alert .close').on("click", function(e){
-                            $(this).parent().fadeTo(500, 0).slideUp(500);
-                        });
+                        swal({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'Número de sócio não existe na base de dádos!!!! Por favor, contact-nos se realmente este for o seu número de sócio.',
+                        })
 
                     }else if (retorno.nomee == true){
-                        $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button>' +
-                            '<p><b>O Nome de sócio não coincide com o número de sócio!!!!</b></p>' +
-                            '</div>');
-                        window.setTimeout(function() {
-                            $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                                $(this).remove();
-                            });
-                        }, 5000);
 
-                        $('.alert .close').on("click", function(e){
-                            $(this).parent().fadeTo(500, 0).slideUp(500);
-                        });
+                        swal({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'O Nome de sócio não coincide com o número de sócio!!!!',
+                        })
 
                     }else if (retorno.emaile == true){
-                        $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button>' +
-                            '<p><b>O e-mail que está a tentar registar já está registado!!!!</b></p>' +
-                            '</div>');
-                        window.setTimeout(function() {
-                            $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                                $(this).remove();
-                            });
-                        }, 5000);
 
-                        $('.alert .close').on("click", function(e){
-                            $(this).parent().fadeTo(500, 0).slideUp(500);
-                        });
+                        swal({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'O e-mail que está a tentar registar já está registado!!!!',
+                        })
 
                     }else if (retorno.socioue == true){
-
-                        $("#mensagemRegisto").html('<div class="alert alert-danger"><button type="button" class="close">×</button>' +
-                            '<p><b>O número de sócio que está a tentar registar já está registado!!!!</b></p>' +
-                            '</div>');
-                        window.setTimeout(function() {
-                            $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                                $(this).remove();
-                            });
-                        }, 5000);
-
-                        $('.alert .close').on("click", function(e){
-                            $(this).parent().fadeTo(500, 0).slideUp(500);
-                        });
+                        swal({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'O número de sócio que está a tentar registar já está registado, alguma dúvida contacte-nos !!!!',
+                        })
 
                     }else if (retorno.registo == true){
 
-                        document.location.href='login.php';
-                        $("#mensagemLogin").html('<b>Sucesso!!!!</b></div>');
-                       // $("#mensagemLogin").html('<div class="alert alert-success"><button type="button" class="close">×</button><p><b>Sucesso!!!!</b></p></div>');
+                            $('#nome').val('');
+                            $("#email").val('');
+                            $("#senha").val('');
+                            $("#senhac").val('');
+                            $("#socio").val('');
 
-                        window.setTimeout(function() {
-                            $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                                $(this).remove();
-                            });
-                        }, 5000);
-
-                        $('.alert .close').on("click", function(e){
-                            $(this).parent().fadeTo(500, 0).slideUp(500);
-                        });
-
+                        swal({
+                            title: 'Registo efetuado com sucesso!',
+                            type: 'success',
+                            showConfirmButton: false,
+                            timer: 3000
+                    })
+                        setTimeout(function() {
+                            window.location.href = "login.php";
+                        }, 3000);
                     }
 
                 },
