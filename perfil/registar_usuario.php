@@ -19,7 +19,6 @@ include_once 'conexao.php';
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/body_site.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -57,7 +56,7 @@ include_once 'conexao.php';
 <nav class="navbar navbar-expand-lg navbar-light fixed-top navmenu">
       <div class="scpLogo">
       <h1>
-        <a href="../index.html" title="SPORTING CP">SPORTING CP</a>
+        <a href="../index.php" title="SPORTING CP">SPORTING CP</a>
       </h1>
     </div>
     <!-- Use any element to open the sidenav -->
@@ -68,38 +67,38 @@ include_once 'conexao.php';
   <div class=" mobile-hide-menu collapse navbar-collapse">
     <ul class="navbar-nav topnav topnavloc" style="">
       <li class="nav-item">
-        <a class="nav-link text-white" href="../index.html">INICIO</a>
+        <a class="nav-link text-white" href="../index.php">INICIO</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../blog.html">BLOG</a>
+        <a class="nav-link text-white" href="../blog.php">BLOG</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../museu.html">MÚSEU</a>
+        <a class="nav-link text-white" href="../museu.php">MÚSEU</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../multimedia.html">MULTIMÉDIA</a>
+        <a class="nav-link text-white" href="../multimedia.php">MULTIMÉDIA</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../historia.html">HISTÓRIA</a>
+        <a class="nav-link text-white" href="../historia.php">HISTÓRIA</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../socios.html">SÓCIOS</a>
+        <a class="nav-link text-white" href="../socios.php">SÓCIOS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../quemsomos.html">QUÊM SOMOS</a>
+        <a class="nav-link text-white" href="../quemsomos.php">QUÊM SOMOS</a>
       </li>
     </ul>
 </nav>
 
  <div id="mySidenav" class="sidenav sidenavposition">
   <a href="../javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="../index.html">INICIO</a>
-  <a href="../blog.html">BLOG</a>
-  <a href="../museu.html">MÚSEU</a>
-  <a href="../multimedia.html">MULTIMÉDIA</a>
-  <a href="../historia.html">HISTÓRIA</a>
-  <a href="../socios.html">SÓCIOS</a>
-  <a href="../quemsomos.html">QUÊM SOMOS</a>
+  <a href="../index.php">INICIO</a>
+  <a href="../blog.php">BLOG</a>
+  <a href="../museu.php">MÚSEU</a>
+  <a href="../multimedia.php">MULTIMÉDIA</a>
+  <a href="../historia.php">HISTÓRIA</a>
+  <a href="../socios.php">SÓCIOS</a>
+  <a href="../quemsomos.php">QUÊM SOMOS</a>
 </div>
 
 <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
@@ -164,7 +163,7 @@ include_once 'conexao.php';
         </div>
         </div><br>
 
-          <input type="hidden" estado="estado" id="estado" placeholder="0" >
+          <input type="hidden" name="estado" id="estado" placeholder="0" >
        <button style="width: 100%;" class="btn btn-success btn-sm ml-lg-2" id="btnRegistar" >Efetuar Registo</button>
     </form><hr>
     <span>Já possui um registo ? </span> <a class="" href="login.php">Login aqui !</a>
@@ -175,18 +174,18 @@ include_once 'conexao.php';
 <footer>
     <nav class="navbar navbar-dark bg-dark justify-content-center footer1">
        <ul class="mobile-hide-bottom">         
-         <a  href="../webmaster.html" class="footer-link col-1 text-white">Webmaster</a>       
-         <a href="../index.html" class="footer-link col-1 text-white">Contactos</a>
-         <a href="../index.html" class="footer-link col-1 text-white">Ajuda</a> 
-         <a href="../index.html" class="footer-link col-1 text-white">Termos e condições</a>
-         <a href="../index.html" class="footer-link col-1 text-white">Politica de privacidade</a>        
+         <a href="../webmaster.php" class="footer-link col-1 text-white">Webmaster</a>       
+         <a href="../index.php" class="footer-link col-1 text-white">Contactos</a>
+         <a href="../index.php" class="footer-link col-1 text-white">Ajuda</a>
+         <a href="../index.php" class="footer-link col-1 text-white">Termos e condições</a>
+         <a href="../index.php" class="footer-link col-1 text-white">Politica de privacidade</a>
      </ul>
     </nav>
     <nav class="navbar navbar-dark bg-dark justify-content-center footer2">
          <ul>         
            <a style="font-size: 18px;" href="https://www.facebook.com/Nucleo-Sportinguista-de-Campo-Maior-122434427835725/" target="_blank" class=" text-white fa fa-facebook col-2 text-white"></a>       
-           <a style="font-size: 18px;" href="../index.html" target="_blank" class="text-white fa fa-instagram col-2"></a>
-           <a style="font-size: 18px;" href="../index.html" target="_blank" class="text-white fa fa-youtube-play col-2"></a>
+           <a style="font-size: 18px;" href="../index.php" target="_blank" class="text-white fa fa-instagram col-2"></a>
+           <a style="font-size: 18px;" href="../index.php" target="_blank" class="text-white fa fa-youtube-play col-2"></a>
         </ul>
     </nav>
     <nav class="navbar navbar-dark bg-dark justify-content-center footer3" style="">

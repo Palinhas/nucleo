@@ -121,13 +121,13 @@ include_once("conexao.php");
 
  <div id="mySidenav" class="sidenav sidenavposition">
   <a href="../javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="../index.html">INICIO</a>
-  <a href="../blog.html">BLOG</a>
-  <a href="../museu.html">MÚSEU</a>
-  <a href="../multimedia.html">MULTIMÉDIA</a>
-  <a href="../historia.html">HISTÓRIA</a>
-  <a href="../socios.html">SÓCIOS</a>
-  <a href="../quemsomos.html">QUÊM SOMOS</a>
+  <a href="../index.php">INICIO</a>
+  <a href="../blog.php">BLOG</a>
+  <a href="../museu.php">MÚSEU</a>
+  <a href="../multimedia.php">MULTIMÉDIA</a>
+  <a href="../historia.php">HISTÓRIA</a>
+  <a href="../socios.php">SÓCIOS</a>
+  <a href="../quemsomos.php">QUÊM SOMOS</a>
 </div>
 
 <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->

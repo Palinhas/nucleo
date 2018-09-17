@@ -19,6 +19,7 @@ $(document).ready(function(){
                 type: 'error',
                 title: 'Oops...',
                 text: 'Preencha todos os campos!!!!',
+                timer: 3000,
             })
 
 
@@ -40,6 +41,7 @@ $(document).ready(function(){
                 type: 'error',
                 title: 'Oops...',
                 text: 'As Passwords não coincidem!!!!',
+                timer: 3000,
             })
 
             var erro = true;
@@ -56,8 +58,9 @@ $(document).ready(function(){
                         swal({
                             type: 'error',
                             title: 'Oops...',
-                            text: 'Número de sócio não existe na base de dádos!!!! Por favor, contact-nos se realmente este for o seu número de sócio.',
-                        })
+                            text: 'Número de sócio não existe na base de dádos!!!! Se for um erro, por favor contacta-nos.',
+                            timer: 6000,
+						})
 
                     }else if (retorno.nomee == true){
 
@@ -65,7 +68,8 @@ $(document).ready(function(){
                             type: 'error',
                             title: 'Oops...',
                             text: 'O Nome de sócio não coincide com o número de sócio!!!!',
-                        })
+                            timer: 3000,
+						})
 
                     }else if (retorno.emaile == true){
 
@@ -73,6 +77,7 @@ $(document).ready(function(){
                             type: 'error',
                             title: 'Oops...',
                             text: 'O e-mail que está a tentar registar já está registado!!!!',
+                            timer: 3000,
                         })
 
                     }else if (retorno.socioue == true){
@@ -80,6 +85,7 @@ $(document).ready(function(){
                             type: 'error',
                             title: 'Oops...',
                             text: 'O número de sócio que está a tentar registar já está registado, alguma dúvida contacte-nos !!!!',
+                            timer: 6000,
                         })
 
                     }else if (retorno.registo == true){
@@ -109,17 +115,12 @@ $(document).ready(function(){
             });
 
         }
-
-                console.log("nome : " + nome);
-                console.log("email : " + email);
-                console.log("senha : " + senha);
-                console.log("senhac : " + senhac);
-                console.log("socio : " + socio);
-                console.log("erro: " + erro);
-
-
-
-
+                // console.log("nome : " + nome);
+                // console.log("email : " + email);
+                // console.log("senha : " + senha);
+                // console.log("senhac : " + senhac);
+                // console.log("socio : " + socio);
+                // console.log("erro: " + erro);
 	});
 
 
@@ -370,5 +371,266 @@ $(document).ready(function(){
 
 
 	/*  *********************************   */
+
+    /*  PEDIDO DE CONSULTAR SOCIO PARA EDITAR   */
+
+    $("#editSocio").click(function(e){ // e - evento do coolback
+        e.preventDefault();
+
+        var id = $(this).attr('socio-id');
+        console.log(id);
+
+        $('#ModalEditarSocio').modal('show');
+
+        $.ajax({
+                url: 'trata.php',
+                type: 'POST',
+                data: {id: id, acao: 'consultarSocio'},
+                success: function(retorno){
+
+                    // console.log("ocupacao : " + retorno.ocupacao);
+
+                    var ocupacao = retorno.ocupacao;
+                    var socio_scp = retorno.socio_scp;
+                    var tipo_scp = retorno.tipo_scp;
+                    var contacto = retorno.contacto;
+                    var habilitacoes = retorno.habilitacoes;
+                    var morada = retorno.morada;
+                    var cp = retorno.cp;
+                    var localidade = retorno.localidade;
+                    var pais = retorno.pais;
+                    var nacionalidade = retorno.nacionalidade;
+
+                    $("#mostraOcupacaao").text(ocupacao);
+                    $("#ocupacaoM").val(ocupacao);
+
+                    $("#mostraSoScp").text(socio_scp);
+                    $("#socio_scpM").val(socio_scp);
+
+                    $("#mostraTipoSocio").text(tipo_scp);
+                    $("#tipo_scpM").val(tipo_scp);
+
+                    $("#mostraContacto").text(contacto);
+                    $("#contactoM").val(contacto);
+
+                    $("#mostraHabilitacoes").text(habilitacoes);
+                    $("#habilitacoesM").val(habilitacoes);
+
+                    $("#mostraMorada").text(morada);
+                    $("#moradaM").val(morada);
+
+                    $("#mostraCp").text(cp);
+                    $("#cpM").val(cp);
+
+                    $("#mostraLocalidade").text(localidade);
+                    $("#localidadeM").val(localidade);
+
+                    $("#mostraPais").text(pais);
+                    $("#paisM").val(pais);
+
+                    $("#mostraNacionalidade").text(nacionalidade);
+                    $("#nacionalidadeM").val(nacionalidade);
+
+                },
+                error: function(data){
+                    console.log(data);
+
+                }
+            });
+
+    });
+
+
+    /*  *********************************   */
+
+    /*  PEDIDO DE CONSULTAR SOCIO PARA EDITAR   */
+
+    $("#btnEditSocio").click(function(e){ // e - evento do coolback
+        e.preventDefault();
+
+        var id = $(this).attr('socios-id');
+
+        var erro = false;
+
+        var ocupacao = $("#ocupacaoM").val();
+        var socio_scp = $("#socio_scpM").val();
+        var tipo_scp = $("#tipo_scpM").val();
+        var contacto = $("#contactoM").val();
+        var habilitacoes = $("#habilitacoesM").val();
+        var morada = $("#moradaM").val();
+        var cp = $("#cpM").val();
+        var localidade = $("#localidadeM").val();
+        var pais = $("#paisM").val();
+        var nacionalidade = $("#nacionalidadeM").val();
+
+        console.log("IdModal " + id);
+        console.log("OcupacaoM " + ocupacao);
+        console.log("socio_scpM " + socio_scp);
+        console.log("tipo_scpM " + tipo_scp);
+        console.log("contactoM " + contacto);
+        console.log("habilitacoes " + habilitacoes);
+        console.log("moradaM " + morada);
+        console.log("cpM " + cp);
+        console.log("localidadeM " + localidade);
+        console.log("paisM " + pais);
+        console.log("nacionalidadeM " + nacionalidade);
+
+        if (ocupacao == '' || socio_scp == '' || tipo_scp == '' || contacto == '' || habilitacoes == '' ||
+            morada == '' || cp == '' || localidade == '' || pais == '' || nacionalidade == '') {
+
+            swal({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Não é permitido campos vazios!!!!',
+                timer: 3000,
+            })
+
+            var erro = true;
+
+        }else if (!erro) {
+            $.ajax({
+                url: 'trata.php',
+                type: 'POST',
+                data: {id: id, ocupacao: ocupacao, socio_scp: socio_scp, tipo_scp: tipo_scp, contacto: contacto, habilitacoes: habilitacoes, morada: morada, cp: cp, localidade: localidade, pais: pais, nacionalidade: nacionalidade, acao: 'editarSocio'},
+                success: function(retorno){
+
+                    // console.log("Retorno.erro " + retorno.erro);
+                    // console.log("Retorno.editou " + retorno.editou);
+
+                    if (retorno.editou == false){
+
+                        swal({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'Algo correu mal!!!! Os teus dados de sócio não foram editados.',
+                            timer: 6000,
+                        })
+
+                    }else if (retorno.editou == true){
+
+                        swal({
+                            title: 'Dados esitados com sucesso!',
+                            type: 'success',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                        setTimeout(function() {
+
+                            $('#ModalEditarSocio').modal('hide');
+                            $("#mostraOcupacaao").text(retorno.ocupacaoR);
+                            $("#mostraSoScp").text(retorno.socio_scpR);
+                            $("#mostraTipoSocio").text(retorno.tipo_scpR);
+                            $("#mostraHabilitacoes").text(retorno.habilitacoesR);
+                            $("#mostraContacto").text(retorno.contactoR);
+                            $("#mostraMorada").text(retorno.moradaR);
+                            $("#mostraCp").text(retorno.cpR);
+                            $("#mostraLocalidade").text(retorno.localidadeR);
+                            $("#mostraPais").text(retorno.paisR);
+                            $("#mostraNacionalidade").text(retorno.nacionalidadeR);
+
+                    }, 2000);
+                    }
+
+                },
+                error: function(data){
+                    console.log(data);
+
+                }
+            });
+        }else{
+            swal({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Algo correu mal!!!! Erro de sintaxe.',
+                timer: 6000,
+            })
+        }
+    });
+
+
+    /*  *********************************   */
+
+    /*  PEDIDO DE CONSULTAR SOCIO PARA EDITAR   */
+
+    $("#btnLogin").click(function(e){ // e - evento do coolback
+        e.preventDefault();
+
+        var erro = false;
+
+        var email = $("#email").val();
+        var senha = $("#senha").val();
+
+        console.log("email " + email);
+        console.log("senha " + senha);
+
+        if (email == '' || senha == '' ) {
+
+            swal({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Não é permitido campos vazios!!!!',
+                timer: 3000,
+            })
+
+            var erro = true;
+
+        }else if (!erro) {
+            $.ajax({
+                url: 'trata.php',
+                type: 'POST',
+                data: {email: email, senha: senha, acao: 'login'},
+                success: function(retorno){
+
+                     console.log("Retorno.erro " + retorno.erro);
+                     console.log("Retorno.login " + retorno.login);
+                     console.log("Retorno.login " + retorno.nomer);
+
+                     var idr = retorno.idr;
+                     var nomer = retorno.nomer;
+
+                    if (retorno.login == false){
+
+                        swal({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'Algo correu mal!!!! Os teus dados de login não estão corretos.',
+                            timer: 6000,
+                        })
+                    }else if (retorno.login == true){
+                        swal({
+                            title: 'Login efetuado com sucesso!',
+                            type: 'success',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+
+
+                        setTimeout(function() {
+                            //window.location = "informacao-pessoal.php?idr=" + idr ? idr= + idr;
+                            document.cookie = "idr=" + idr ; "expires=Thu, 18 Dec 2013 12:00:00 UTC ;path=/";
+                            document.cookie = "nomer=" + nomer ; "expires=Thu, 18 Dec 2013 12:00:00 UTC ;path=/";
+                            // document.cookie = "idr=" + idr ;
+                            // document.cookie = "nomer=" + nomer ;
+                            window.location = "informacao-pessoal.php";
+                        }, 1000);
+                    }
+                },
+                error: function(data){
+                    console.log(data);
+
+                }
+            });
+        }else{
+            swal({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Pedido não efetuado!!!! Erro de sintaxe.',
+                timer: 6000,
+            })
+        }
+    });
+
+
+    /*  *********************************   */
 
 });

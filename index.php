@@ -1,3 +1,7 @@
+<?php
+session_start();
+mb_internal_encoding('UTF-8');
+?>
 <!doctype html>
 <html lang="pt">
   <head>
@@ -21,21 +25,34 @@
   </head>
   <body class="body">
  <nav class="navbar navbar-dark bg-dark fixed-top justify-content-end nav1">
-       <ul class="nav">         
-         <a style="font-size: 20px;" href="https://www.facebook.com/Nucleo-Sportinguista-de-Campo-Maior-122434427835725/" target="_blank" class="text-white fa fa-facebook col-2"></a>       
+       <ul class="nav">
+         <a style="font-size: 20px;" href="https://www.facebook.com/Nucleo-Sportinguista-de-Campo-Maior-122434427835725/" target="_blank" class="text-white fa fa-facebook col-2"></a>
          <a style="font-size: 20px;" href="index.html" target="_blank" class="text-white fa fa-instagram col-2"></a>
-         <a style="font-size: 20px;" href="index.html" target="_blank" class="text-white fa fa-youtube-play col-2"></a> 
+         <a style="font-size: 20px;" href="index.html" target="_blank" class="text-white fa fa-youtube-play col-2"></a>
       </ul>
   </nav>
- 
-      <nav class="navbar navbar-light fixed-top nav2">
-          <div class="mobile-hide-txt">
-            <span class="txt-head">Site oficial do Núcleo do Sporting Clube de Portugal de Campo Maior</span>
-          </div>
-              <div class="mobile-hide-login login">
-                <a href="perfil/login.php" class="btn button btn-sm btn-warning">Login/registar</a>
-              </div>
-      </nav>
+
+ <nav class="navbar navbar-light fixed-top nav2">
+     <div class="">
+         <span class="txt-head mobile-hide-txt">Site oficial do Núcleo do Sporting Clube de Portugal de Campo Maior</span>
+     </div>
+     <div class="login mobile-hide-login">
+             <?php
+             if(!empty($_SESSION['id'])){?>
+                 <li class="navbar-brand"><i class="fa fa-user-secret"></i>
+                 <span class="social-mini" ><?php echo $_SESSION['nome'];?></span>
+                 <?php
+                 echo "<a style='font-size: small' class='btn badge badge-success ml-2 social-mini' role='button' aria-pressed='true' href='perfil/sair.php'>Sair</a>";
+             }elseif (empty($_SESSION['id'])){?>
+                 <div class="mobile-hide-login login">
+                 <a href="perfil/login.php" class="btn button btn-sm btn-warning">Login/registar</a>
+
+                </div>
+                <?php }?>
+
+         </li>
+     </div>
+ </nav>
 
           <!-- metaMenu -->
 
@@ -56,22 +73,22 @@
         <a class="nav-link text-white" href="index.html">INICIO</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="blog.html">BLOG</a>
+        <a class="nav-link text-white" href="blog.php">BLOG</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="museu.html">MÚSEU</a>
+        <a class="nav-link text-white" href="museu.php">MÚSEU</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="multimedia.html">MULTIMÉDIA</a>
+        <a class="nav-link text-white" href="multimedia.php">MULTIMÉDIA</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="historia.html">HISTÓRIA</a>
+        <a class="nav-link text-white" href="historia.php">HISTÓRIA</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="socios.html">SÓCIOS</a>
+        <a class="nav-link text-white" href="socios.php">SÓCIOS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="quemsomos.html">QUÊM SOMOS</a>
+        <a class="nav-link text-white" href="quemsomos.php">QUÊM SOMOS</a>
       </li>
     </ul>
 </nav>
@@ -79,12 +96,12 @@
  <div id="mySidenav" class="sidenav sidenavposition">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="index.html">INICIO</a>
-  <a href="blog.html">BLOG</a>
-  <a href="museu.html">MÚSEU</a>
-  <a href="multimedia.html">MULTIMÉDIA</a>
-  <a href="historia.html">HISTÓRIA</a>
-  <a href="socios.html">SÓCIOS</a>
-  <a href="quemsomos.html">QUÊM SOMOS</a>
+  <a href="blog.php">BLOG</a>
+  <a href="museu.php">MÚSEU</a>
+  <a href="multimedia.php">MULTIMÉDIA</a>
+  <a href="historia.php">HISTÓRIA</a>
+  <a href="socios.php">SÓCIOS</a>
+  <a href="quemsomos.php">QUÊM SOMOS</a>
 </div>
 
 
@@ -125,7 +142,7 @@
              
                <p class="lead text-white font-weight-bold"><kbd>Visita o múseu online, conhece a nossa História.</kbd></p>
                
-                <a class="btn btn-warning btn-lg" href="museu.html" role="button">Visitar</a>
+                <a class="btn btn-warning btn-lg" href="museu.php" role="button">Visitar</a>
             </div>
           </div>
 
@@ -163,7 +180,7 @@
 <footer>
     <nav class="navbar navbar-dark bg-dark justify-content-center footer1">
        <ul class="mobile-hide-bottom">         
-         <a  href="webmaster.html" class="footer-link col-1 text-white">Webmaster</a>       
+         <a href="webmaster.php" class="footer-link col-1 text-white">Webmaster</a>
          <a href="index.html" class="footer-link col-1 text-white">Contactos</a>
          <a href="index.html" class="footer-link col-1 text-white">Ajuda</a> 
          <a href="index.html" class="footer-link col-1 text-white">Termos e condições</a>
@@ -185,7 +202,7 @@
         </ul>
     </nav>
 </footer>
-</footer>
+
 
 </div> 
 
@@ -204,7 +221,8 @@ function closeNav() {
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="perfil/js/scripts.js"></script>
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>

@@ -1,3 +1,7 @@
+<?php
+session_start();
+mb_internal_encoding('UTF-8');
+?>
 <!doctype html>
 <html lang="pt">
   <head>
@@ -17,32 +21,45 @@
     <link rel="stylesheet" href="css/body_site.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <title>MUSEU | Site oficial do Núcleo do Sporting Clube de portugal de Campo Maior</title>
+    <title>HISTÓRIA | Site oficial do Núcleo do Sporting Clube de portugal de Campo Maior</title>
   </head>
   <body class="body">
  <nav class="navbar navbar-dark bg-dark fixed-top justify-content-end nav1">
        <ul class="nav">         
          <a style="font-size: 20px;" href="https://www.facebook.com/Nucleo-Sportinguista-de-Campo-Maior-122434427835725/" target="_blank" class="text-white fa fa-facebook col-2"></a>       
-         <a style="font-size: 20px;" href="index.html" target="_blank" class="text-white fa fa-instagram col-2"></a>
-         <a style="font-size: 20px;" href="index.html" target="_blank" class="text-white fa fa-youtube-play col-2"></a> 
+         <a style="font-size: 20px;" href="index.php" target="_blank" class="text-white fa fa-instagram col-2"></a>
+         <a style="font-size: 20px;" href="index.php" target="_blank" class="text-white fa fa-youtube-play col-2"></a>
       </ul>
   </nav>
- 
-      <nav class="navbar navbar-light fixed-top nav2">
-          <div class="mobile-hide-txt">
-            <span class="txt-head">Site oficial do Núcleo do Sporting Clube de Portugal de Campo Maior</span>
-          </div>
-              <div class="mobile-hide-login login">
-                <a href="perfil/login.php" class="btn button btn-sm btn-warning">Login/registar</a>
-              </div>
-      </nav>
+
+ <nav class="navbar navbar-light fixed-top nav2">
+     <div class="">
+         <span class="txt-head mobile-hide-txt">Site oficial do Núcleo do Sporting Clube de Portugal de Campo Maior</span>
+     </div>
+     <div class="login mobile-hide-login">
+         <?php
+         if(!empty($_SESSION['id'])){?>
+         <li class="navbar-brand"><i class="fa fa-user-secret"></i>
+             <span class="social-mini" ><?php echo $_SESSION['nome'];?></span>
+             <?php
+             echo "<a style='font-size: small' class='btn badge badge-success ml-2 social-mini' role='button' aria-pressed='true' href='perfil/sair.php'>Sair</a>";
+             }elseif (empty($_SESSION['id'])){?>
+                 <div class="mobile-hide-login login">
+                     <a href="perfil/login.php" class="btn button btn-sm btn-warning">Login/registar</a>
+
+                 </div>
+             <?php }?>
+
+         </li>
+     </div>
+ </nav>
 
           <!-- metaMenu -->
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top navmenu">
       <div class="scpLogo">
       <h1>
-        <a href="index.html" title="SPORTING CP">SPORTING CP</a>
+        <a href="index.php" title="SPORTING CP">SPORTING CP</a>
       </h1>
     </div>
     <!-- Use any element to open the sidenav -->
@@ -53,38 +70,38 @@
   <div class=" mobile-hide-menu collapse navbar-collapse">
     <ul class="navbar-nav topnav topnavloc" style="">
       <li class="nav-item">
-        <a class="nav-link text-white" href="index.html">INICIO</a>
+        <a class="nav-link text-white" href="index.php">INICIO</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="blog.html">BLOG</a>
+        <a class="nav-link text-white" href="blog.php">BLOG</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="museu.html">MÚSEU</a>
+        <a class="nav-link text-white" href="museu.php">MÚSEU</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="multimedia.html">MULTIMÉDIA</a>
+        <a class="nav-link text-white" href="multimedia.php">MULTIMÉDIA</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="historia.html">HISTÓRIA</a>
+        <a class="nav-link text-white" href="historia.php">HISTÓRIA</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="socios.html">SÓCIOS</a>
+        <a class="nav-link text-white" href="socios.php">SÓCIOS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="quemsomos.html">QUÊM SOMOS</a>
+        <a class="nav-link text-white" href="quemsomos.php">QUÊM SOMOS</a>
       </li>
     </ul>
 </nav>
 
  <div id="mySidenav" class="sidenav sidenavposition">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="index.html">INICIO</a>
-  <a href="blog.html">BLOG</a>
-  <a href="museu.html">MÚSEU</a>
-  <a href="multimedia.html">MULTIMÉDIA</a>
-  <a href="historia.html">HISTÓRIA</a>
-  <a href="socios.html">SÓCIOS</a>
-  <a href="quemsomos.html">QUÊM SOMOS</a>
+  <a href="index.php">INICIO</a>
+  <a href="blog.php">BLOG</a>
+  <a href="museu.php">MÚSEU</a>
+  <a href="multimedia.php">MULTIMÉDIA</a>
+  <a href="historia.php">HISTÓRIA</a>
+  <a href="socios.php">SÓCIOS</a>
+  <a href="quemsomos.php">QUÊM SOMOS</a>
 </div>
 
 
@@ -110,18 +127,18 @@
 <footer>
     <nav class="navbar navbar-dark bg-dark justify-content-center footer1">
        <ul class="mobile-hide-bottom">         
-         <a  href="webmaster.html" class="footer-link col-1 text-white">Webmaster</a>       
-         <a href="index.html" class="footer-link col-1 text-white">Contactos</a>
-         <a href="index.html" class="footer-link col-1 text-white">Ajuda</a> 
-         <a href="index.html" class="footer-link col-1 text-white">Termos e condições</a>
-         <a href="index.html" class="footer-link col-1 text-white">Politica de privacidade</a>        
+         <a href="webmaster.php" class="footer-link col-1 text-white">Webmaster</a>
+         <a href="index.php" class="footer-link col-1 text-white">Contactos</a>
+         <a href="index.php" class="footer-link col-1 text-white">Ajuda</a>
+         <a href="index.php" class="footer-link col-1 text-white">Termos e condições</a>
+         <a href="index.php" class="footer-link col-1 text-white">Politica de privacidade</a>
      </ul>
     </nav>
     <nav class="navbar navbar-dark bg-dark justify-content-center footer2">
          <ul>         
            <a style="font-size: 18px;" href="https://www.facebook.com/Nucleo-Sportinguista-de-Campo-Maior-122434427835725/" target="_blank" class=" text-white fa fa-facebook col-2 text-white"></a>       
-           <a style="font-size: 18px;" href="index.html" target="_blank" class="text-white fa fa-instagram col-2"></a>
-           <a style="font-size: 18px;" href="index.html" target="_blank" class="text-white fa fa-youtube-play col-2"></a>
+           <a style="font-size: 18px;" href="index.php" target="_blank" class="text-white fa fa-instagram col-2"></a>
+           <a style="font-size: 18px;" href="index.php" target="_blank" class="text-white fa fa-youtube-play col-2"></a>
         </ul>
     </nav>
     <nav class="navbar navbar-dark bg-dark justify-content-center footer3" style="">

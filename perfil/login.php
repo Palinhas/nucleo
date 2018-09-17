@@ -16,9 +16,14 @@ session_start();
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/body_site.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Sweetalert2 CSS -->
+    <script src="../js/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="../css/sweetalert2.min.css">
 
     <!-- Custom styles for this template -->
     <link href="../css/signin2.css" rel="stylesheet">
@@ -48,7 +53,7 @@ session_start();
 <nav class="navbar navbar-expand-lg navbar-light fixed-top navmenu">
       <div class="scpLogo">
       <h1>
-        <a href="../index.html" title="SPORTING CP">SPORTING CP</a>
+        <a href="../index.php" title="SPORTING CP">SPORTING CP</a>
       </h1>
     </div>
     <!-- Use any element to open the sidenav -->
@@ -59,38 +64,38 @@ session_start();
   <div class=" mobile-hide-menu collapse navbar-collapse">
     <ul class="navbar-nav topnav topnavloc" style="">
       <li class="nav-item">
-        <a class="nav-link text-white" href="../index.html">INICIO</a>
+        <a class="nav-link text-white" href="../index.php">INICIO</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../blog.html">BLOG</a>
+        <a class="nav-link text-white" href="../blog.php">BLOG</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../museu.html">MÚSEU</a>
+        <a class="nav-link text-white" href="../museu.php">MÚSEU</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../multimedia.html">MULTIMÉDIA</a>
+        <a class="nav-link text-white" href="../multimedia.php">MULTIMÉDIA</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../historia.html">HISTÓRIA</a>
+        <a class="nav-link text-white" href="../historia.php">HISTÓRIA</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../socios.html">SÓCIOS</a>
+        <a class="nav-link text-white" href="../socios.php">SÓCIOS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../quemsomos.html">QUÊM SOMOS</a>
+        <a class="nav-link text-white" href="../quemsomos.php">QUÊM SOMOS</a>
       </li>
     </ul>
 </nav>
 
  <div id="mySidenav" class="sidenav sidenavposition">
   <a href="../javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="../index.html">INICIO</a>
-  <a href="../blog.html">BLOG</a>
-  <a href="../museu.html">MÚSEU</a>
-  <a href="../multimedia.html">MULTIMÉDIA</a>
-  <a href="../historia.html">HISTÓRIA</a>
-  <a href="../socios.html">SÓCIOS</a>
-  <a href="../quemsomos.html">QUÊM SOMOS</a>
+  <a href="../index.php">INICIO</a>
+  <a href="../blog.php">BLOG</a>
+  <a href="../museu.php">MÚSEU</a>
+  <a href="../multimedia.php">MULTIMÉDIA</a>
+  <a href="../historia.php">HISTÓRIA</a>
+  <a href="../socios.php">SÓCIOS</a>
+  <a href="../quemsomos.php">QUÊM SOMOS</a>
 </div>
 
 
@@ -116,17 +121,25 @@ session_start();
       </div>
 
     <form class="form-signin" method="post" action="valida.php">
-      <label class="sr-only">E-mail</label>
-      <input type="email" name="email" class="form-control" placeholder="Escreva o e-m@il" required autofocus>
-      <br>
-      <label class="sr-only">Password</label>
-      <input type="password" name="senha" class="form-control" placeholder="Escrever a Password" required>
-      <div class="checkbox mb-3">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+      <label for="email" class="sr-only">E-mail</label>
+      <input type="email" name="email" id="email" class="form-control" placeholder="Escreva o e-m@il" required autofocus>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+      <label for="senha" class="sr-only">Password</label>
+      <input type="password" name="senha" id="senha" class="form-control" placeholder="Escrever a Password" required>
+            </div>
+        </div>
+
+        <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me"> Lembr-me
         </label>
       </div>
-      <input style="width: 100%;" class="btn btn-success" type="submit" name="btnLogin" value="Login"></input>
+      <button style="width: 100%;" class="btn btn-success" type="" name="" id="btnLogin" >Login</button>
       <hr>
       <span>Ainda não tem registo?</span> <a style="font-color: #000000" href="registar_usuario.php">Registe-se aqui !</a>
     </form>
@@ -136,18 +149,18 @@ session_start();
 <footer>
     <nav class="navbar navbar-dark bg-dark justify-content-center footer1">
        <ul class="mobile-hide-bottom">         
-         <a  href="../webmaster.html" class="footer-link col-1 text-white">Webmaster</a>       
-         <a href="../index.html" class="footer-link col-1 text-white">Contactos</a>
-         <a href="../index.html" class="footer-link col-1 text-white">Ajuda</a> 
-         <a href="../index.html" class="footer-link col-1 text-white">Termos e condições</a>
-         <a href="../index.html" class="footer-link col-1 text-white">Politica de privacidade</a>        
+         <a href="../webmaster.php" class="footer-link col-1 text-white">Webmaster</a>
+         <a href="../index.php" class="footer-link col-1 text-white">Contactos</a>
+         <a href="../index.php" class="footer-link col-1 text-white">Ajuda</a>
+         <a href="../index.php" class="footer-link col-1 text-white">Termos e condições</a>
+         <a href="../index.php" class="footer-link col-1 text-white">Politica de privacidade</a>
      </ul>
     </nav>
     <nav class="navbar navbar-dark bg-dark justify-content-center footer2">
          <ul>         
            <a style="font-size: 18px;" href="https://www.facebook.com/Nucleo-Sportinguista-de-Campo-Maior-122434427835725/" target="_blank" class=" text-white fa fa-facebook col-2 text-white"></a>       
-           <a style="font-size: 18px;" href="../index.html" target="_blank" class="text-white fa fa-instagram col-2"></a>
-           <a style="font-size: 18px;" href="../index.html" target="_blank" class="text-white fa fa-youtube-play col-2"></a>
+           <a style="font-size: 18px;" href="../index.php" target="_blank" class="text-white fa fa-instagram col-2"></a>
+           <a style="font-size: 18px;" href="../index.php" target="_blank" class="text-white fa fa-youtube-play col-2"></a>
         </ul>
     </nav>
     <nav class="navbar navbar-dark bg-dark justify-content-center footer3" style="">
@@ -160,7 +173,14 @@ session_start();
 </footer>
 
 
-</div> 
+</div>
+
+ <script src="../bootstrap-validate/dist/bootstrap-validate.js"></script>
+
+ <script>
+     bootstrapValidate('#email', 'required:<b>Campo Obrigatório!</b>')
+     bootstrapValidate('#senha', 'required:<b>Campo Obrigatório!</b>')
+ </script>
 
 <script>
 /* Open the sidenav */
@@ -180,5 +200,10 @@ function closeNav() {
     <script src="../js/popper.min.js"></script>
     <script src="js/scripts.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+
+    <script src="../js/sweetalert2.all.min.js"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+    <script src="../js/polyfill.min.js"></script>
+
   </body>
 </html>

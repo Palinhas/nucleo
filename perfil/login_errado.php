@@ -48,7 +48,7 @@ session_start();
 <nav class="navbar navbar-expand-lg navbar-light fixed-top navmenu">
       <div class="scpLogo">
       <h1>
-        <a href="../index.html" title="SPORTING CP">SPORTING CP</a>
+        <a href="../index.php" title="SPORTING CP">SPORTING CP</a>
       </h1>
     </div>
     <!-- Use any element to open the sidenav -->
@@ -59,38 +59,38 @@ session_start();
   <div class=" mobile-hide-menu collapse navbar-collapse">
     <ul class="navbar-nav topnav topnavloc" style="">
       <li class="nav-item">
-        <a class="nav-link text-white" href="../index.html">INICIO</a>
+        <a class="nav-link text-white" href="../index.php">INICIO</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../blog.html">BLOG</a>
+        <a class="nav-link text-white" href="../blog.php">BLOG</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../museu.html">MÚSEU</a>
+        <a class="nav-link text-white" href="../museu.php">MÚSEU</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../multimedia.html">MULTIMÉDIA</a>
+        <a class="nav-link text-white" href="../multimedia.php">MULTIMÉDIA</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../historia.html">HISTÓRIA</a>
+        <a class="nav-link text-white" href="../historia.php">HISTÓRIA</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../socios.html">SÓCIOS</a>
+        <a class="nav-link text-white" href="../socios.php">SÓCIOS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="../quemsomos.html">QUÊM SOMOS</a>
+        <a class="nav-link text-white" href="../quemsomos.php">QUÊM SOMOS</a>
       </li>
     </ul>
 </nav>
 
  <div id="mySidenav" class="sidenav sidenavposition">
   <a href="../javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="../index.html">INICIO</a>
-  <a href="../blog.html">BLOG</a>
-  <a href="../museu.html">MÚSEU</a>
-  <a href="../multimedia.html">MULTIMÉDIA</a>
-  <a href="../historia.html">HISTÓRIA</a>
-  <a href="../socios.html">SÓCIOS</a>
-  <a href="../quemsomos.html">QUÊM SOMOS</a>
+  <a href="../index.php">INICIO</a>
+  <a href="../blog.php">BLOG</a>
+  <a href="../museu.php">MÚSEU</a>
+  <a href="../multimedia.php">MULTIMÉDIA</a>
+  <a href="../historia.php">HISTÓRIA</a>
+  <a href="../socios.php">SÓCIOS</a>
+  <a href="../quemsomos.php">QUÊM SOMOS</a>
 </div>
 
 
